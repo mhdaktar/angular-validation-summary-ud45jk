@@ -1,0 +1,21 @@
+<div id="mainWrapper">
+	<h1>Angular Forms Validation Summary</h1>
+
+	<form id="mainForm" #userForm="ngForm" (ngSubmit)="createUser()" >
+		<label for="userName">User Name:</label>
+		<input id="userName" name="User Name" [(ngModel)]="model.userName" required minlength="4"/>
+
+		<label for="emailAddress">Email Address:</label>
+		<input id="emailAddress" name="Email Address" [(ngModel)]="model.emailAddress" required />
+
+		<label for="password">Password:</label>
+		<input id="password" name="Password" type="password" [(ngModel)]="model.password" required minlength="8" customValidator/>
+
+    <validation-summary [form]="userForm"></validation-summary>
+
+		<button type="submit" [disabled]="!userForm.form.valid">Submit</button>
+	</form>
+
+	<h2>Diagnostic Info</h2>
+  <div [innerHtml]="diagnostic"></div>
+</div>
